@@ -11,10 +11,18 @@ function setup() {
   let myCanvas = createCanvas(400, 400);
   myCanvas.parent("canvas-parent");
   clicked = false;
+  r = 0;
+  g = 0;
+  b = 0;
 }
 
 function draw() {
   yellowBear();
+  drawBackground();
+  yellowBear();
+  if (clicked) {
+    pinkBear();
+  }
 }
 
 function yellowBear() {
@@ -160,4 +168,27 @@ function pinkBear() {
   ellipse(79, 117, 35, 60); //right leg
   pop();
   pop();
+}
+
+function drawBackground() {
+  background(220);
+  noStroke();
+  triangle(0, 0, 400, 300, 0, 600);
+  fill(240);
+  triangle(280, 0, 110, 450, 10, 0);
+  fill(0, 200, 0, 40);
+  rect(0, 300, 400, 100); //ground
+
+  //red half circle
+  fill(200, 100, 100, 90);
+  arc(300, -1, 130, 130, 0, -PI, CHORD);
+  arc(300, -1, 100, 100, 0, -PI, CHORD);
+  arc(300, -1, 70, 70, 0, -PI, CHORD);
+  arc(300, -1, 40, 40, 0, -PI, CHORD);
+}
+
+function mouseClicked() {
+  if (mouseX < 365 && mouseX > 235 && mouseY < 65) {
+    clicked = true;
+  }
 }
