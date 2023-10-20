@@ -2,6 +2,8 @@ let clicked;
 let r;
 let g;
 let b;
+let counter;
+let hearthScale;
 
 function setup() {
   // These lines are fitting our canvas
@@ -14,6 +16,8 @@ function setup() {
   r = 0;
   g = 0;
   b = 0;
+  counter = 0;
+  hearthScale = 0;
 }
 
 function draw() {
@@ -22,6 +26,10 @@ function draw() {
   yellowBear();
   if (clicked) {
     pinkBear();
+    counter += 1; //counts how many times the pink bear is drawn
+  }
+  if (counter >= 200) {
+    growingHearth();
   }
 }
 
@@ -191,4 +199,21 @@ function mouseClicked() {
   if (mouseX < 365 && mouseX > 235 && mouseY < 65) {
     clicked = true;
   }
+}
+
+//draws the growing heart
+function growingHearth() {
+  push();
+  scale(hearthScale);
+  if (hearthScale <= 0.5) {
+    hearthScale += 0.001;
+  }
+
+  translate(185, 100);
+  fill(255, 0, 0, 30); //red
+  noStroke();
+  triangle(150, 100, 200, 155, 250, 100);
+  arc(175, 100, 50, 70, -PI, 0, CHORD);
+  arc(225, 100, 50, 70, -PI, 0, CHORD);
+  pop();
 }
