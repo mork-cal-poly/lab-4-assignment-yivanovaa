@@ -31,6 +31,7 @@ function draw() {
   if (counter >= 200) {
     growingHearth();
   }
+  drawGyrados(360, 10, 0.1);
 }
 
 function yellowBear() {
@@ -216,4 +217,123 @@ function growingHearth() {
   arc(175, 100, 50, 70, -PI, 0, CHORD);
   arc(225, 100, 50, 70, -PI, 0, CHORD);
   pop();
+}
+
+function drawGyrados(x, y, s) {
+  push();
+  let l = color(21, 37, 189); //dark blue
+  let m = color(0, 175, 255); //light blue
+  let n = color(216, 0, 0);
+  let o = color(240, 198, 146);
+  let p = color(255, 67, 106);
+  let q = color(128, 233, 255);
+  translate(x, y);
+  scale(s);
+
+  //body
+  fill(m);
+  ellipse(200, 150, 100);
+  rect(150, 125, 100, 58);
+  beginShape();
+  curveVertex(220, 210);
+  curveVertex(255, 255);
+  curveVertex(270, 265);
+  curveVertex(290, 265);
+  curveVertex(290, 250);
+  curveVertex(285, 252);
+  curveVertex(272, 255);
+  endShape(CLOSE);
+  beginShape();
+  curveVertex(180, 210);
+  curveVertex(145, 255);
+  curveVertex(130, 265);
+  curveVertex(110, 265);
+  curveVertex(110, 250);
+  curveVertex(115, 252);
+  curveVertex(128, 255);
+  endShape(CLOSE);
+
+  //eyes
+  fill(255);
+  triangle(200, 160, 160, 150, 150, 125);
+  triangle(200, 160, 240, 150, 250, 125);
+  fill(n);
+  ellipse(185, 149, 20);
+  ellipse(215, 149, 20);
+  fill(0);
+  ellipse(185, 151, 10);
+  ellipse(215, 151, 10);
+  fill(l);
+  triangle(190, 150, 200, 50, 210, 150);
+  triangle(100, 100, 195, 160, 195, 140);
+  triangle(300, 100, 205, 160, 205, 140);
+  ellipse(200, 150, 25);
+
+  //fins
+  fill(q);
+  triangle(300, 250, 290, 225, 200, 200);
+  triangle(300, 205, 290, 225, 200, 200);
+  triangle(315, 150, 300, 205, 200, 200);
+  triangle(100, 250, 110, 225, 200, 200);
+  triangle(100, 205, 110, 225, 200, 200);
+  triangle(85, 150, 100, 205, 200, 200);
+
+  //MOUTH
+  fill(0);
+  ellipse(190, 165, 7, 3);
+  ellipse(210, 165, 7, 3);
+  fill(o);
+  beginShape();
+  curveVertex(165, 170);
+  curveVertex(200, 175);
+  curveVertex(235, 170);
+  curveVertex(235, 255);
+  curveVertex(200, 255);
+  curveVertex(165, 255);
+  curveVertex(166, 200);
+  endShape(CLOSE);
+  fill(0);
+  beginShape();
+  curveVertex(172, 175);
+  curveVertex(200, 182);
+  curveVertex(230, 175);
+  curveVertex(230, 245);
+  curveVertex(200, 245);
+  curveVertex(173, 245);
+  endShape(CLOSE);
+  beginShape();
+  fill(p);
+  curveVertex(174, 230);
+  curveVertex(174, 200);
+  curveVertex(226, 200);
+  curveVertex(226, 230);
+  curveVertex(200, 245);
+  endShape(CLOSE);
+  fill(255);
+  beginShape();
+  curveVertex(220, 173);
+  curveVertex(230, 170);
+  curveVertex(230, 190);
+  endShape(CLOSE);
+  beginShape();
+  curveVertex(185, 176);
+  curveVertex(173, 175);
+  curveVertex(173, 195);
+  endShape(CLOSE);
+  beginShape();
+  curveVertex(185, 250);
+  curveVertex(173, 253);
+  curveVertex(173, 235);
+  endShape(CLOSE);
+  beginShape();
+  curveVertex(215, 250);
+  curveVertex(228, 253);
+  curveVertex(230, 235);
+  endShape(CLOSE);
+  pop();
+
+  scale(hearthScale);
+  if (hearthScale <= 0.5) {
+    hearthScale += 0.001;
+  }
 }
