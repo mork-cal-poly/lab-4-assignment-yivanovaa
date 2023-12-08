@@ -113,7 +113,7 @@ function pinkBear() {
 
   //small heart
   push();
-  scale(0.5);
+  scale(hearthScale);
   translate(185, 100);
   fill(255, 0, 0); //red
   noStroke();
@@ -199,6 +199,7 @@ function drawBackground() {
 function mouseClicked() {
   if (mouseX < 365 && mouseX > 235 && mouseY < 65) {
     clicked = true;
+    hearthScale += 0.1;
   }
 }
 
